@@ -1,0 +1,164 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+}
+
+
+/* CSS for error message */
+
+.error-message {
+    color: red;
+    font-weight: bold;
+}
+
+.role-message {
+    color: greenyellow;
+    font-weight: bold;
+}
+
+.game-name {
+    text-align: center;
+    color: #333;
+}
+
+.small-heading {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.new-player-container {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.new-player-container li {
+    margin-bottom: 10px;
+}
+
+textarea {
+    flex: 1 1 auto;
+    /* Flex grow and shrink */
+    max-width: 150px;
+    /* Maximum width */
+    height: 30px;
+    padding: 5px;
+    margin-right: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    box-sizing: border-box;
+    resize: none;
+}
+
+.new-player-container li>div {
+    display: flex;
+    align-items: center;
+    /* Aligns items vertically in the center */
+    margin-bottom: 10px;
+}
+
+.new-player-container li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.new-player-container li label {
+    margin-right: 10px;
+}
+
+button {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+
+.add-new-player-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+button.show-hide {
+    padding: 5px 10px;
+    flex: 0 0 auto;
+    /* No grow, no shrink */
+    align-self: center;
+}
+
+input[type="number"] {
+    width: 100%;
+    /* Full width */
+    padding: 8px 10px;
+    margin: 5px 0 20px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    /* Include padding and border in the element's total width and height */
+    font-size: 16px;
+}
+
+input[type="number"]:focus {
+    border-color: #4A90E2;
+    /* Change border color on focus */
+    outline: none;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+
+/* Responsive Styles */
+
+@media (max-width: 768px) {
+    .new-player-container li {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .new-player-container li label,
+    .new-player-container li textarea,
+    .new-player-container li button {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .new-player-container li button {
+        width: auto;
+    }
+    input[type="number"] {
+        width: calc(100% - 20px);
+        /* Adjust width for smaller screens */
+    }
+}

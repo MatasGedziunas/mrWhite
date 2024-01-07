@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="game-name">Mr. White</h1>
+        <h3 class="small-heading">Game information:</h3>
+        <ul>
+            <div class="new-player-container">
+                <li>
+                    <div>
+                        <label for="player-count">Player count:</label>
+                        <input type="number" name="player-count" id="player-count" value=8 />
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <label for="mr-white-count">Mr. White count:</label>
+                        <input type="number" name="mr-white-count" id="mr-white-count" value=2 />
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <label for="undercover-count">Undercover count:</label>
+                        <input type="number" name="undercover-count" id="undercover-count" value=1 />
+                    </div>
+                </li>
+            </div>
+        </ul>
+        <dialog class="modal" id="modal">
+            <button class="add-new-player-button" id="close-modal">Close</button>
+        </dialog>
+        <button class="add-new-player-button" id="add-players">Add players</button>
+        <div id="player-addition" hidden="true">
+            <ul id="players-addition-list">
+                <!-- <div class="new-player-container">
+                <li>
+                    <div>
+                        <label for="name-${playerNumber}">Name:</label>
+                        <textarea name="name-${playerNumber}" id="name-${playerNumber}">a</textarea>
+                        <button class="show-hide" hidden=true>Show role</button>
+                    </div>
+                </li>
+            </div> -->
+            </ul>
+            <button class="add-new-player-button" id="start-game">Start game</button>
+        </div>
+
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>
