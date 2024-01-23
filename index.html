@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/7da298f918.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -13,7 +14,7 @@
         <h1 class="game-name">Mr. White</h1>
         <h3 class="small-heading">Game information:</h3>
         <ul>
-            <div class="new-player-container">
+            <div class="new-player-container" id="game-info">
                 <li>
                     <div>
                         <label for="player-count">Player count:</label>
@@ -37,6 +38,12 @@
         <dialog class="modal" id="modal">
             <button class="add-new-player-button" id="close-modal">Close</button>
         </dialog>
+        <!-- <dialog class="modal" id="confirmationPlayerRemoval">
+            <div class="centered-div">
+                <button class="green-button" id="close-modal">Yes</button>
+                <button class="red-button" id="close-modal">No</button>
+            </div>
+        </dialog> -->
         <button class="add-new-player-button" id="add-players">Add players</button>
         <div id="player-addition" hidden="true">
             <ul id="players-addition-list">

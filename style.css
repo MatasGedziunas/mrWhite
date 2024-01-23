@@ -21,7 +21,7 @@ body {
 }
 
 .role-message {
-    color: greenyellow;
+    color: rgb(52, 84, 52);
     font-weight: bold;
 }
 
@@ -38,6 +38,37 @@ body {
 ul {
     list-style: none;
     padding: 0;
+}
+
+.green-button,
+.red-button {
+    display: inline-block;
+    margin: 0;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.green-button {
+    background-color: green;
+    color: white;
+    margin-right: 30px;
+}
+
+.red-button {
+    background-color: red;
+    color: white;
+}
+
+.red-button:hover {
+    background-color: darkred;
+    cursor: pointer;
+}
+
+.centered-div {
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }
 
 .new-player-container {
