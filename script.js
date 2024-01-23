@@ -177,13 +177,14 @@ startGame.addEventListener("click", () => {
     } else {
         for (let i = 0; i < parseInt(playerCountInput.value); i++) {
             const playerElement = document.querySelector(`#name-${i}`);
-            if (playerElement.value == "") {
+            const playerSubmitButton = document.querySelector(`#role-names-${i}`);
+            if (playerElement.value == "" || playerSubmitButton.textContent == "Submit") {
                 flag = 1;
                 break;
             }
         }
         if (flag == 1) {
-            const errorMessage = createErrorParagraph("All player names must be filled");
+            const errorMessage = createErrorParagraph("All player names must be filled and submited");
             modal.insertBefore(errorMessage, modal.firstChild);
             modal.showModal();
         } else {
