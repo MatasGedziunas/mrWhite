@@ -171,12 +171,141 @@ label {
 }
 
 
+/* CSS for Category Selection */
+
+#categoryForm {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+#categoriesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#categoriesContainer div {
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+
+/* Custom Checkbox Styles */
+
+#categoriesContainer input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #fff;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #333;
+    border-radius: 4px;
+    /* slightly rounded corners */
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#categoriesContainer input[type="checkbox"]:checked::before,
+#categoriesContainer input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    height: 16px;
+    width: 2px;
+    background-color: #333;
+    top: 2px;
+}
+
+#categoriesContainer input[type="checkbox"]:checked::before {
+    transform: rotate(45deg);
+    left: 7px;
+}
+
+#categoriesContainer input[type="checkbox"]:checked::after {
+    transform: rotate(-45deg);
+    left: 11px;
+}
+
+#categoriesContainer label {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+
+/* Styles for 'Select all categories' Button */
+
+.select-all-button {
+    background-color: #4a76a8;
+    /* A pleasant blue */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px 0;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.select-all-button:hover {
+    background-color: #3a5a78;
+    /* Darker shade for hover effect */
+}
+
+
+/* Responsive Styles */
+
+
 /* Responsive Styles */
 
 @media (max-width: 768px) {
-    .new-player-container li {
+    .container {
+        width: 95%;
+        /* Slightly increase width on smaller screens */
+    }
+    .new-player-container li,
+    #categoriesContainer div {
         flex-direction: column;
         align-items: stretch;
+        width: 100%;
+        /* Full width for better readability */
+    }
+    #categoriesContainer {
+        justify-content: space-between;
+    }
+    #categoriesContainer div {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .select-all-button,
+    button {
+        padding: 12px 24px;
+        /* Larger buttons for easier interaction */
+        font-size: 18px;
+        /* Slightly larger text */
+    }
+    #categoriesContainer input[type="checkbox"] {
+        width: 24px;
+        /* Slightly larger checkboxes */
+        height: 24px;
+    }
+    #categoriesContainer label {
+        font-size: 16px;
+        /* Slightly larger label text */
+    }
+    input[type="number"] {
+        width: calc(100% - 20px);
+        /* Adjust width for smaller screens */
+        padding: 10px;
+        /* Larger padding for easier interaction */
     }
     .new-player-container li label,
     .new-player-container li textarea,
@@ -187,9 +316,5 @@ label {
     }
     .new-player-container li button {
         width: auto;
-    }
-    input[type="number"] {
-        width: calc(100% - 20px);
-        /* Adjust width for smaller screens */
     }
 }

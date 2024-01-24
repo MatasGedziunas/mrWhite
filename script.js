@@ -17,18 +17,53 @@ const playerAdditionDiv = document.querySelector("#player-addition");
 const modal = document.querySelector("#modal");
 const closeModal = document.querySelector("#close-modal");
 const playerAdditionList = document.querySelector("#players-addition-list");
+const categoriesContainer = document.getElementById('categoriesContainer');
+const selectAllButton = document.getElementById('select-all-categories-button');
 const wordList = [
-    ["Kuciene", "Zaveckas", "Kukauskiene"],
-    ["Tree", "Bush", "Trench"],
-    ["Ocean", "Sea", "Lake"],
-    ["Dog", "Puppy", "Canine"]
-]
-console.log(wordList);
+    { category: "Best people", words: ["Tarasevicius", "Skaite", "Gabija", "Paulius", "Liepa", "Akvile", "Ignas", "Gedziunas"] },
+    { category: "LSMUG Teachers", words: ["Kuciene", "Zaveckas", "Kukauskiene"] },
+    { category: "Animals", words: ["Dog", "Cat", "Rabbit", "Fish", "Bird", "Lion", "Dolphin", "Eagle", "Shark", "Wolf"] },
+    { category: "Fruits", words: ["Apple", "Banana", "Orange", "Pear", "Cherry", "Pineapple", "Mango", "Kiwi", "Grapefruit", "Coconut"] },
+    { category: "Countries", words: ["USA", "Canada", "Germany", "Italy", "Japan", "Russia", "Brazil", "India", "Australia", "China"] },
+    { category: "Kitchen Items", words: ["Spoon", "Fork", "Plate", "Cup", "Knife", "Blender", "Toaster", "Microwave", "Oven", "Kettle"] },
+    { category: "Vehicles", words: ["Car", "Bike", "Bus", "Train", "Motorcycle", "Plane", "Ship", "Helicopter", "Tram", "Skateboard"] },
+    { category: "Sports", words: ["Soccer", "Basketball", "Tennis", "Baseball", "Golf", "Cricket", "Rugby", "Badminton", "Volleyball", "Hockey"] },
+    { category: "Musical Instruments", words: ["Guitar", "Piano", "Violin", "Drums", "Flute", "Saxophone", "Harp", "Accordion", "Cello", "Trombone"] },
+    { category: "Occupations", words: ["Doctor", "Teacher", "Engineer", "Chef", "Artist", "Astronaut", "Detective", "Pilot", "Architect", "Journalist"] },
+    { category: "Famous Landmarks", words: ["Eiffel Tower", "Great Wall of China", "Statue of Liberty", "Taj Mahal", "Colosseum", "Machu Picchu", "Sydney Opera House", "Mount Fuji", "Big Ben", "Stonehenge"] }
+];
+document.addEventListener("DOMContentLoaded", function () {
+    wordList.forEach(list => {
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = list.category;
+        checkbox.name = 'category';
+        checkbox.checked = true;
+        const label = document.createElement('label');
+        label.htmlFor = list.category;
+        label.appendChild(document.createTextNode(list.category));
+        const div = document.createElement('div');
+        div.appendChild(checkbox);
+        div.appendChild(label);
+        categoriesContainer.appendChild(div);
+    });
+})
+
 let citizenWord = "";
 let undercoverWord = "";
 var numberInputs = document.querySelectorAll('input[type="number"]');
 let players = [];
 let startPlayers = [];
+
+selectAllButton.addEventListener("click", () => {
+    const checkboxes = document.querySelectorAll('#categoriesContainer input[type="checkbox"]');
+    selectAllButton.addEventListener('click', function () {
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = true;
+        });
+    });
+})
+
 addPlayersButton.addEventListener("click", () => {
     if (addPlayersButton.textContent == "Add players") {
         const playerCount = parseInt(playerCountInput.value);
@@ -47,6 +82,12 @@ addPlayersButton.addEventListener("click", () => {
             modal.insertBefore(errorMessage, modal.firstChild);
             modal.showModal();
         } else {
+            const checkboxes = document.querySelectorAll('#categoriesContainer input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked != true) {
+                    removeCategory(checkbox.id);
+                }
+            });
             for (let i = 0; i < playerCount; i++) {
                 players.push(new Player("", 0, i.toString(), "", ""));
             }
@@ -64,6 +105,15 @@ addPlayersButton.addEventListener("click", () => {
         location.reload();
     }
 });
+
+function removeCategory(categoryName) {
+    for (let i = 0; i < wordList.length; i++) {
+        const list = wordList[i];
+        if (list.category == categoryName) {
+            wordList.splice(i, 1);
+        }
+    }
+}
 
 function addPlayerElements() {
     playerAdditionList.innerHTML = "";
@@ -89,6 +139,10 @@ function disableGameInfoInputs() {
     const inputs = container.querySelectorAll('input');
     inputs.forEach(input => {
         input.disabled = true;
+    });
+    const checkboxes = document.querySelectorAll('#categoriesContainer input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.disabled = true;
     });
 }
 
@@ -131,19 +185,19 @@ function selectWords() {
         let categoryIndex;
         do {
             categoryIndex = Math.floor(Math.random() * wordList.length * 0.999);
-        } while (wordList[categoryIndex].length < 2)
+        } while (wordList[categoryIndex].words.length < 2)
 
         let word1Index, word2Index;
         do {
-            word1Index = Math.floor(Math.random() * wordList[categoryIndex].length * 0.999);
-            word2Index = Math.floor(Math.random() * wordList[categoryIndex].length * 0.999);
+            word1Index = Math.floor(Math.random() * wordList[categoryIndex].words.length * 0.999);
+            word2Index = Math.floor(Math.random() * wordList[categoryIndex].words.length * 0.999);
         } while (word1Index === word2Index);
-        citizenWord = wordList[categoryIndex][word1Index];
-        undercoverWord = wordList[categoryIndex][word2Index];
+        citizenWord = wordList[categoryIndex].words[word1Index];
+        undercoverWord = wordList[categoryIndex].words[word2Index];
         updateWords();
-        wordList[categoryIndex].splice(word1Index, 1);
-        wordList[categoryIndex].splice(word2Index, 1);
-        if (wordList[categoryIndex].length < 2) {
+        wordList[categoryIndex].words.splice(word1Index, 1);
+        wordList[categoryIndex].words.splice(word2Index, 1);
+        if (wordList[categoryIndex].words.length < 2) {
             wordList.splice(categoryIndex, 1);
         }
         console.log(wordList);
@@ -207,7 +261,7 @@ function showHideButtonsFunction(button) {
         const nameInput = document.querySelector(`#name-${id}`).value;
         if (nameInput != "") {
             player.name = nameInput;
-            button.textContent = "Show role";
+            button.textContent = "Show word";
         } else {
             const p = createErrorParagraph("Please enter a name");
             modal.insertBefore(p, modal.firstChild);
