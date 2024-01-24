@@ -20,17 +20,23 @@ const playerAdditionList = document.querySelector("#players-addition-list");
 const categoriesContainer = document.getElementById('categoriesContainer');
 const selectAllButton = document.getElementById('select-all-categories-button');
 const wordList = [
-    { category: "Best people", words: ["Tarasevicius", "Skaite", "Gabija", "Paulius", "Liepa", "Akvile", "Ignas", "Gedziunas"] },
-    { category: "LSMUG Teachers", words: ["Kuciene", "Zaveckas", "Kukauskiene"] },
-    { category: "Animals", words: ["Dog", "Cat", "Rabbit", "Fish", "Bird", "Lion", "Dolphin", "Eagle", "Shark", "Wolf"] },
-    { category: "Fruits", words: ["Apple", "Banana", "Orange", "Pear", "Cherry", "Pineapple", "Mango", "Kiwi", "Grapefruit", "Coconut"] },
+    { category: "Best people", words: ["Tarasevicius", "Skaiste", "Gabija", "Paulius", "Liepa", "Akvile", "Ignas", "Gedziunas"] },
+    { category: "LSMUG Teachers", words: ["Kuciene", "Zaveckas", "Kukauskiene", "Budrevicius", "Brigita", "Anglu mokytojos visos", "Bucnys", "Jolanta ar kaip ten ta pavaduotoja kur niekam nepatinka"] },
+    { category: "Animals", words: ["Dog", "Cat", "Rabbit", "Fish", "Bird", "Lion", "Dolphin", "Shark", "Wolf"] },
+    { category: "Fruits", words: ["Apple", "Banana", "Orange", "Pear", "Cherry", "Pineapple", "Mango"] },
     { category: "Countries", words: ["USA", "Canada", "Germany", "Italy", "Japan", "Russia", "Brazil", "India", "Australia", "China"] },
-    { category: "Kitchen Items", words: ["Spoon", "Fork", "Plate", "Cup", "Knife", "Blender", "Toaster", "Microwave", "Oven", "Kettle"] },
     { category: "Vehicles", words: ["Car", "Bike", "Bus", "Train", "Motorcycle", "Plane", "Ship", "Helicopter", "Tram", "Skateboard"] },
-    { category: "Sports", words: ["Soccer", "Basketball", "Tennis", "Baseball", "Golf", "Cricket", "Rugby", "Badminton", "Volleyball", "Hockey"] },
-    { category: "Musical Instruments", words: ["Guitar", "Piano", "Violin", "Drums", "Flute", "Saxophone", "Harp", "Accordion", "Cello", "Trombone"] },
+    { category: "Sports", words: ["Soccer", "Basketball", "Tennis", "Baseball", "Golf", "Rugby", "Badminton", "Volleyball", "Hockey"] },
     { category: "Occupations", words: ["Doctor", "Teacher", "Engineer", "Chef", "Artist", "Astronaut", "Detective", "Pilot", "Architect", "Journalist"] },
-    { category: "Famous Landmarks", words: ["Eiffel Tower", "Great Wall of China", "Statue of Liberty", "Taj Mahal", "Colosseum", "Machu Picchu", "Sydney Opera House", "Mount Fuji", "Big Ben", "Stonehenge"] }
+    { category: "Famous Landmarks", words: ["Eiffel Tower", "Great Wall of China", "Statue of Liberty", "Taj Mahal", "Colosseum", "Sydney Opera House", "Mount Fuji", "Big Ben"] },
+    { category: "Books charachters", words: ["Tula", "Balys Sruoga", "Liudas Vasaris", "Antanas Garsva", "Metamarfozes vabalas"] },
+    { category: "Filmuku veikejai", words: ["Bartas", "Homeris", "Planktonas iš kempiniuko", "Mardžė iš simpsonų", "Patrikas iš kempiuniuko", "Ogis ir tarakonai"] },
+    { category: "Cities", words: ["New York", "Paris", "London", "Tokyo", "Rome", "Sydney", "Los Angeles", "Dubai", "Beijing"] },
+    { category: "Legendos", words: ["Algiukas", "Antanelis", "Zenius", "Airinas", "Labas Tomai"] },
+    { category: "Singers", words: ["Adele", "Hiperbole", "Beyonce", "Lady Gaga", "Kanye West", "Madonna", "Pink floyd", "OG version"] },
+    { category: "Famous Sportsmen", words: ["Cristiano Ronaldo", "LeBron James", "Lionel Messi", "Roger Federer", "Usain Bolt", "Michael Phelps", "Novak Djokovic", "Serena Williams"] },
+    { category: "Presidents", words: ["Donald Trump", "Gitanas Nauseda", "Valdas Adamkus", "Rolandas Paksas", "Joe biden", "Dalia Grybauskaite", "Putin chuilo", "Zelenskis"] },
+    { category: "Keliones", words: ["Amalfi kelione", "Israelis kelione", "Lenkija kelione", "Kaimas keliones", "Palanga keliones", "Tenerife kelione", "Isleistuves", "Simtadienis"] }
 ];
 document.addEventListener("DOMContentLoaded", function () {
     wordList.forEach(list => {
